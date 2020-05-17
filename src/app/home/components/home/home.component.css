@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+img {
+  width: 100%;
+}
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.card {
+  width: 25%;
+  text-align: center;
+}
