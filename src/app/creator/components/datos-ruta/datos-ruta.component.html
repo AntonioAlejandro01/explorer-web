@@ -1,0 +1,6 @@
+<h2>Datos de la Ruta</h2>
+<input type="text" [(ngModel)]="title" />
+<input type="text" [(ngModel)]="author" />
+<input type="text" [(ngModel)]="location" />
+<input type="text" [(ngModel)]="topic" />
+<app-creator-place (placeCreated)="placeCreated($event)"></app-creator-place>
