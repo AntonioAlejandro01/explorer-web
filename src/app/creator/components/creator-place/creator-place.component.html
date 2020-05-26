@@ -1,5 +1,5 @@
-<input type="text" [(ngModel)]="nombre" />
-<input type="text" [(ngModel)]="comment" />
+<app-input-field [field]="namePlace"></app-input-field>
+<app-input-field [field]="commentPlace"></app-input-field>
 <app-map (CoordenadasMarked)="coordenadasMarked($event)"></app-map>
 
-<button (click)="createPlace()"></button>
+<button (click)="createPlace()">Añadir</button>

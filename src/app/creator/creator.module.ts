@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreatorComponent } from './components/creator/creator.component';
 import { DatosRutaComponent } from './components/datos-ruta/datos-ruta.component';
 import { CreatorPlaceComponent } from './components/creator-place/creator-place.component';
-
+import { SharedModule } from './../shared/shared.module';
 @NgModule({
   declarations: [
     MapComponent,
@@ -15,6 +15,6 @@ import { CreatorPlaceComponent } from './components/creator-place/creator-place.
     DatosRutaComponent,
     CreatorPlaceComponent,
   ],
-  imports: [CommonModule, CreatorRoutingModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, CreatorRoutingModule, HttpClientModule, FormsModule, SharedModule],
 })
 export class CreatorModule {}
