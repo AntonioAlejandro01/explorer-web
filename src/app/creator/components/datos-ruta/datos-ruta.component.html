@@ -1,6 +1,9 @@
-<h2>Datos de la Ruta</h2>
-<div class="data-inputs-container">
-    <app-input-field *ngFor="let field of fields" [field]="field"></app-input-field>
+
+<h3>Datos de la Ruta</h3>
+<div class="data-route">
+    <div class="data-inputs-container">
+        <app-input-field *ngFor="let field of fields" [field]="field"></app-input-field>
+    </div>
+    <app-list [places]="places"></app-list>
 </div>
-<app-list [places]="places"></app-list>
 <app-creator-place (placeAdded)="placeCreated($event)"></app-creator-place>

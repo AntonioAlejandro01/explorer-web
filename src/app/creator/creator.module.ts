@@ -8,6 +8,8 @@ import { CreatorComponent } from './components/creator/creator.component';
 import { DatosRutaComponent } from './components/datos-ruta/datos-ruta.component';
 import { CreatorPlaceComponent } from './components/creator-place/creator-place.component';
 import { SharedModule } from './../shared/shared.module';
+
+import { MaterialModule } from './../material/material.module';
 @NgModule({
   declarations: [
     MapComponent,
@@ -15,6 +17,6 @@ import { SharedModule } from './../shared/shared.module';
     DatosRutaComponent,
     CreatorPlaceComponent,
   ],
-  imports: [CommonModule, CreatorRoutingModule, HttpClientModule, FormsModule, SharedModule],
+  imports: [CommonModule, CreatorRoutingModule, HttpClientModule, FormsModule, SharedModule, MaterialModule],
 })
 export class CreatorModule {}

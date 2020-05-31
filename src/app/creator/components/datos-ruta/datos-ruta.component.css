@@ -1,3 +1,26 @@
 :host{
     
 }
+
+.data-inputs-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.data-inputs-container > *{
+    margin-right: 1em;
+   
+}
+
+.data-route{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+h3:nth-child(1) {
+    margin-bottom: -0.7em;
+    padding-left: 0.7em;
+}
