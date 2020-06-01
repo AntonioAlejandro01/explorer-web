@@ -4,6 +4,7 @@
     <div class="data-inputs-container">
         <app-input-field *ngFor="let field of fields" [field]="field"></app-input-field>
     </div>
-    <app-list [places]="places"></app-list>
+    <button mat-flat-button color="primary" (click)="onClickCreateRoute()">Crear</button>
+    <mat-checkbox color="primary"[(ngModel)]="checked">Subir al servidor</mat-checkbox>
 </div>
-<app-creator-place (placeAdded)="placeCreated($event)"></app-creator-place>
+<app-creator-place (placeAdded)="placeCreated($event)" [places]="places"></app-creator-place>

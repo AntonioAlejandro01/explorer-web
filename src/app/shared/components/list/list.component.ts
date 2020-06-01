@@ -13,14 +13,6 @@ export class ListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.places.push({
-      nombre:"No hay ninguna ruta añadida",
-      comment:"",
-      coordenadas: {
-        latitud:0,
-        longitud:0,
-      }
-    });
   }
 
   placeClick(event: Event){

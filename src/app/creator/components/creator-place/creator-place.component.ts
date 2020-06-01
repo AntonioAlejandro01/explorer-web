@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Coordenadas } from 'src/app/core/models/coordenadas.model';
 
 import { Field } from 'src/app/core/models/field.model';
@@ -20,7 +20,7 @@ export class CreatorPlaceComponent implements OnInit {
   }
   coordenadasPlace: Coordenadas;
   @Output() placeAdded: EventEmitter<Place> = new EventEmitter();
-
+  @Input() places: Place[];
   constructor() {}
 
   ngOnInit(): void {}

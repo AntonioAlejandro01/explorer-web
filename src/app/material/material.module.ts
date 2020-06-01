@@ -12,6 +12,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import {MatListModule} from '@angular/material/list';
     MatSidenavModule,
     MatTooltipModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   exports: [
     MatButtonModule,
@@ -41,7 +44,8 @@ import {MatListModule} from '@angular/material/list';
     MatSidenavModule,
     MatTooltipModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
 })
 export class MaterialModule {}

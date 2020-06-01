@@ -6,4 +6,6 @@
         <button mat-raised-button color="primary"(click)="createPlace()" class="btnAdd">Añadir</button>
     </div>
     <app-map (CoordenadasMarked)="coordenadasMarked($event)" class="map"></app-map>
+    <app-list [places]="places"></app-list>
+
 </div>
