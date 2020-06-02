@@ -1,11 +1,19 @@
 <h1>Chest</h1>
-<app-select [options]="options" (valueChange)="valueChange($event)"></app-select>
-<app-search-box (valueChange)="change($event)" (searchClick)="search()"></app-search-box>
+<select id="selectFilter" [(ngModel)]="option">
+  <option *ngFor="let option of options;let i = index" [value]="i">{{option}}</option>
+</select>
+<div class="search">
+  <input type="search" id="inputSearch" [(ngModel)]="valueSearch">
+  <button mat-icon-button (click)="search()">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
+
 <mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let route of routes" (click)="clickListItem()">
-      {{route.title}}
-    </mat-list-option>
-  </mat-selection-list>
-  <p id="valueList"style="display: none;">
-      {{shoes.selectedOptions.selected}}
-  </p>
+  <mat-list-option *ngFor="let route of routes" (click)="clickListItem()">
+    {{route.title}}
+  </mat-list-option>
+</mat-selection-list>
+<p id="valueList" style="display: none;">
+  {{shoes.selectedOptions.selected}}
+</p>

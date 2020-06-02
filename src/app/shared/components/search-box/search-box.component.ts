@@ -1,26 +1,18 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.css']
+  styleUrls: ['./search-box.component.css'],
 })
 export class SearchBoxComponent implements OnInit {
-  value: string;
-  @Output() valueChange: EventEmitter<string> = new EventEmitter();
+  @Input() value: string;
   @Output() searchClick: EventEmitter<any> = new EventEmitter();
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  click() {
+    this.searchClick.emit();
   }
-
-  onChange(){
-    this.valueChange.emit(this.value);
-  }
-
-  click(){
-    this.searchClick.emit();  
-  }
-
-
 }
