@@ -1,6 +1,6 @@
 <h1>Chest</h1>
 <app-select [options]="options" (valueChange)="valueChange($event)"></app-select>
-<app-search-box (valueChange)="change()" (searchClick)="search()"></app-search-box>
+<app-search-box (valueChange)="change($event)" (searchClick)="search()"></app-search-box>
 <mat-selection-list #shoes [multiple]="false">
     <mat-list-option *ngFor="let route of routes" (click)="clickListItem()">
       {{route.title}}

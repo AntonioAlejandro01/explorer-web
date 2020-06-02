@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ruta } from 'src/app/core/models/ruta.model';
 import { Route } from '@angular/compiler/src/core';
+import { RoutesService } from 'src/app/core/services/routes/routes.service';
 
 @Component({
   selector: 'app-creator',
@@ -8,15 +9,13 @@ import { Route } from '@angular/compiler/src/core';
   styleUrls: ['./creator.component.css'],
 })
 export class CreatorComponent implements OnInit {
-  correctRoute: boolean;
-  private ruta: Ruta;
-  constructor() {}
+  constructor(private routeService: RoutesService) {}
 
   ngOnInit(): void {}
 
   rutaCreada(ruta: Ruta) {
-    this.ruta = ruta;
+    if(ruta){
+      this.routeService.postRoute(ruta);
+    }
   }
-
-  createRoute() {}
 }

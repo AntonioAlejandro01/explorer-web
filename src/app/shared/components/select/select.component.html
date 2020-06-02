@@ -1,4 +1,4 @@
-<mat-select [(value)]="selected" (valueChange)="change()">
-    <mat-option>None</mat-option>
-   <mat-option *ngFor="let option of options" [value]="option | lowercase">{{option}}</mat-option>
-  </mat-select>
+<select [(value)]="selected" (valueChange)="change()">
+    <option>None</option>
+   <option *ngFor="let option of options" [value]="option | lowercase">{{option}}</option>
+  </select>

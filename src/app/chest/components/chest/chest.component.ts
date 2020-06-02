@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ruta } from './../../../core/models/ruta.model';
+import { RoutesService } from 'src/app/core/services/routes/routes.service';
 @Component({
   selector: 'app-chest',
   templateUrl: './chest.component.html',
@@ -10,7 +11,7 @@ export class ChestComponent implements OnInit {
   routes: Ruta[];
   private option: string;
   private valueOption: string;
-  constructor() { }
+  constructor(private routeService: RoutesService) { }
 
   ngOnInit(): void {
     this.options = ['Author','Topic','Location','Title'];
@@ -23,7 +24,7 @@ export class ChestComponent implements OnInit {
     this.valueOption = value;
   }
   search(){
-
+    // this.routes = this.routeService.getRoutesByFilter({type:this.option,value:this.valueOption})
   }
 
   clickListItem(){
