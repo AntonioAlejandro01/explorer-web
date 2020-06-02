@@ -9,10 +9,12 @@ import { MaterialModule } from './../material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { ListComponent } from './components/list/list.component';
+import { SelectComponent } from './components/select/select.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
 
 @NgModule({
-  declarations: [HeaderComponent, InputFieldComponent, ListComponent],
+  declarations: [HeaderComponent, InputFieldComponent, ListComponent, SelectComponent, SearchBoxComponent],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule],
-  exports: [HeaderComponent, InputFieldComponent,ListComponent],
+  exports: [HeaderComponent, InputFieldComponent,ListComponent, SelectComponent,SearchBoxComponent],
 })
 export class SharedModule {}

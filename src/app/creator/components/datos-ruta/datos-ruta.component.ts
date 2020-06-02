@@ -20,7 +20,8 @@ export class DatosRutaComponent implements OnInit {
 
   ngOnInit(): void {
     this.fields = env.fieldsRoute.map(title =>({title,value:''}));
-   this.places = [];
+    this.places = [];
+    this.checked = true;
   
   }
   onClickCreateRoute(){
