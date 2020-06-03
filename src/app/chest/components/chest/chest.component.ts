@@ -28,10 +28,7 @@ export class ChestComponent implements OnInit {
       })
       .subscribe((response) => {
         if (response.status === 200) {
-          console.log('Array antes', this.routes);
           this.routes = response.body;
-          console.log('Cuerpo de la respuesta', response.body);
-          console.log('Array despues', this.routes);
         } else if (response.status === 204) {
           alert('No se ha encontrado ninguna ruta');
         } else {
@@ -41,13 +38,9 @@ export class ChestComponent implements OnInit {
   }
 
   onClick(id: string) {
-    console.log(id);
-    console.log(this.routes[id]);
     const ruta = this.routes[id];
     const decision = confirm('Descargar imagen??');
     if (decision) {
-      console.log(ruta);
-
       this.routeService.getQRImage(ruta.qrKey).subscribe((response) => {
         if (response.status === 200) {
           if (window.navigator.msSaveOrOpenBlob) {
