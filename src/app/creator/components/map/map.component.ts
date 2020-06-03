@@ -17,6 +17,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   @Output() CoordenadasMarked: EventEmitter<any> = new EventEmitter();
   private coordenadas: Coordenadas;
   private map;
+  private marker;
   constructor() {}
 
   ngOnInit(): void {}
@@ -50,18 +51,19 @@ export class MapComponent implements OnInit, AfterViewInit {
 
     tiles.addTo(this.map);
     this.map.on('click', (e) => {
-      console.log(e.latlng.lat);
-      console.log(this.coordenadas);
+      if (this.marker) {
+        this.map.removeLayer(this.marker);
+      }
       this.coordenadas = {
         latitud: e.latlng.lat,
         longitud: e.latlng.lng,
       };
-      console.log(this.coordenadas);
+      this.marker = L.marker([e.latlng.lat, e.latlng.lng], {
+        title: 'Lugar',
+        draggable: false,
+      });
+      this.marker.addTo(this.map);
+      this.CoordenadasMarked.emit(this.coordenadas);
     });
-  }
-
-  markedPlace() {
-    console.log('Coordendas marcadas: ', this.coordenadas);
-    this.CoordenadasMarked.emit(this.coordenadas);
   }
 }

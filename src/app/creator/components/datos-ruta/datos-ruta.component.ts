@@ -26,7 +26,7 @@ export class DatosRutaComponent implements OnInit {
   onClickCreateRoute() {
     console.log(this.formatearRuta());
 
-    // this.rutaCreada.emit(this.formatearRuta());
+    this.rutaCreada.emit({ ruta: this.formatearRuta(), subir: this.checked });
   }
 
   placeCreated(place: Place) {

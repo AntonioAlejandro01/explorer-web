@@ -41,5 +41,8 @@ export class CreatorPlaceComponent implements OnInit {
       comment: this.commentPlace.value,
       coordenadas: this.coordenadasPlace,
     });
+
+    this.namePlace.value = '';
+    this.commentPlace.value = '';
   }
 }

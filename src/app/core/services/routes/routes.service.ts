@@ -25,7 +25,9 @@ export class RoutesService {
     return this.httpService.get(`${url}routes/${location}`);
   }
   postRoute(route: Ruta) {
-    return this.httpService.post(`${url}routes`, route);
+    return this.httpService.post(`${url}routes`, route, {
+      observe: 'response',
+    });
   }
 
   getQRImage(key: string) {
