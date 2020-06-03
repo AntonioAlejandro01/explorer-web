@@ -21,9 +21,6 @@ export class ChestComponent implements OnInit {
   }
 
   search() {
-    console.log(this.option);
-    console.log(this.valueSearch);
-
     this.routeService
       .getRoutesByFilter({
         type: this.options[this.option],
@@ -31,14 +28,45 @@ export class ChestComponent implements OnInit {
       })
       .subscribe((response) => {
         if (response.status === 200) {
+          console.log('Array antes', this.routes);
           this.routes = response.body;
+          console.log('Cuerpo de la respuesta', response.body);
+          console.log('Array despues', this.routes);
+        } else if (response.status === 204) {
+          alert('No se ha encontrado ninguna ruta');
+        } else {
+          alert('Server Error');
         }
       });
   }
 
-  clickListItem() {
-    const itemList: HTMLElement = document.querySelector('#valueList');
-    const value: string = itemList.textContent;
-    console.log(value);
+  onClick(id: string) {
+    console.log(id);
+    console.log(this.routes[id]);
+    const ruta = this.routes[id];
+    const decision = confirm('Descargar imagen??');
+    if (decision) {
+      console.log(ruta);
+
+      this.routeService.getQRImage(ruta.qrKey).subscribe((response) => {
+        if (response.status === 200) {
+          if (window.navigator.msSaveOrOpenBlob) {
+            // IE specific download.
+            navigator.msSaveBlob(response.body, `${ruta.title}.png`);
+          } else {
+            const downloadLink = document.createElement('a');
+            downloadLink.style.display = 'none';
+            document.body.appendChild(downloadLink);
+            downloadLink.setAttribute(
+              'href',
+              window.URL.createObjectURL(response.body)
+            );
+            downloadLink.setAttribute('download', `${ruta.title}.png`);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+          }
+        }
+      });
+    }
   }
 }

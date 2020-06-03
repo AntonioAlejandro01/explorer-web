@@ -29,7 +29,10 @@ export class RoutesService {
   }
 
   getQRImage(key: string) {
-    return this.httpService.get(`${url}images/QR/${key}`);
+    return this.httpService.get(`${url}images/QR/${key}`, {
+      responseType: 'blob',
+      observe: 'response',
+    });
   }
 
   getData(key: string) {
