@@ -1,0 +1,15 @@
+<h1>Chest</h1>
+<select id="selectFilter" [(ngModel)]="option">
+  <option *ngFor="let option of options;let i = index" [value]="i">{{option}}</option>
+</select>
+<div class="search">
+  <input type="search" id="inputSearch" [(ngModel)]="valueSearch">
+  <button mat-icon-button (click)="search()">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
+
+<div class="list">
+  <div class="list-item" *ngFor="let route of routes;let i = index" [id]="i" (click)="onClick($event.target.id)">
+    {{route.title}}</div>
+</div>

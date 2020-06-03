@@ -1,0 +1,11 @@
+<h3>Creacion de Lugar</h3>
+<div class="data">
+    <div class="fields">
+        <app-input-field [field]="namePlace" class="input"></app-input-field>
+        <app-input-field [field]="commentPlace" class="input"></app-input-field>
+        <button mat-raised-button color="primary"(click)="createPlace()" class="btnAdd">Añadir</button>
+    </div>
+    <app-map (CoordenadasMarked)="coordenadasMarked($event)" class="map"></app-map>
+    <app-list [places]="places"></app-list>
+
+</div>

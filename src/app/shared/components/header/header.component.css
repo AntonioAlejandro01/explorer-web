@@ -1,0 +1,8 @@
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
+#header-title {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+}
