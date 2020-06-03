@@ -4,7 +4,7 @@ import { Place } from 'src/app/core/models/place.model';
 import { Places } from 'src/app/core/models/places.model';
 import { Field } from 'src/app/core/models/field.model';
 import { Ruta } from 'src/app/core/models/ruta.model';
-import { environment as env} from 'src/environments/environment';
+import { environment as env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-datos-ruta',
@@ -13,49 +13,48 @@ import { environment as env} from 'src/environments/environment';
 })
 export class DatosRutaComponent implements OnInit {
   @Output() rutaCreada: EventEmitter<any> = new EventEmitter();
-  fields:Field[];// campos de la ruta
+  fields: Field[]; // campos de la ruta
   checked: boolean;
   places: Place[];
   constructor() {}
 
   ngOnInit(): void {
-    this.fields = env.fieldsRoute.map(title =>({title,value:''}));
+    this.fields = env.fieldsRoute.map((title) => ({ title, value: '' }));
     this.places = [];
     this.checked = true;
-  
   }
-  onClickCreateRoute(){
-   this.rutaCreada.emit(this.formatearRuta());
+  onClickCreateRoute() {
+    console.log(this.formatearRuta());
+
+    // this.rutaCreada.emit(this.formatearRuta());
   }
 
-  placeCreated(place: Place){
-   
+  placeCreated(place: Place) {
     this.places.push(place);
   }
-  formatearRuta(): Ruta{
+  formatearRuta(): Ruta {
     return {
       title: this.fields[0].value,
       author: this.fields[1].value,
-      location:this.fields[2].value,
+      location: this.fields[2].value,
       places: this.createPlaces(this.places),
-      topic:this.fields[3].value
+      topic: this.fields[3].value,
     };
   }
-  createPlaces(places: Place[]): Places{
+  createPlaces(places: Place[]): Places {
     const places2: Places = {
-      comments : [],
+      comments: [],
       nombres: [],
       latitudes: [],
       longitudes: [],
     };
 
-    places.forEach(place => {
+    places.forEach((place) => {
       places2.nombres.push(place.nombre);
       places2.comments.push(place.comment);
       places2.latitudes.push(place.coordenadas.latitud);
       places2.longitudes.push(place.coordenadas.longitud);
     });
     return places2;
-
   }
 }

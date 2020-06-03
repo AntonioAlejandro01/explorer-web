@@ -15,7 +15,7 @@ import { Coordenadas } from 'src/app/core/models/coordenadas.model';
 })
 export class MapComponent implements OnInit, AfterViewInit {
   @Output() CoordenadasMarked: EventEmitter<any> = new EventEmitter();
-  coordenadas: Coordenadas;
+  private coordenadas: Coordenadas;
   private map;
   constructor() {}
 
@@ -23,12 +23,21 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
+    // pedir ubicacion
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.map.panTo({
+          lon: position.coords.longitude,
+          lat: position.coords.latitude,
+        });
+      });
+    }
   }
 
   private initMap(): void {
     this.map = L.map('map', {
       center: [39.82828, -98.5795],
-      zoom: 3,
+      zoom: 25,
     });
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -40,6 +49,15 @@ export class MapComponent implements OnInit, AfterViewInit {
     );
 
     tiles.addTo(this.map);
+    this.map.on('click', (e) => {
+      console.log(e.latlng.lat);
+      console.log(this.coordenadas);
+      this.coordenadas = {
+        latitud: e.latlng.lat,
+        longitud: e.latlng.lng,
+      };
+      console.log(this.coordenadas);
+    });
   }
 
   markedPlace() {

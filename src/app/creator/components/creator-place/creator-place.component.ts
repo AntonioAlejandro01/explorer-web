@@ -10,14 +10,14 @@ import { Place } from 'src/app/core/models/place.model';
   styleUrls: ['./creator-place.component.css'],
 })
 export class CreatorPlaceComponent implements OnInit {
-  namePlace:Field = {
-    title:"Nombre",
-    value:""
-  }
+  namePlace: Field = {
+    title: 'Nombre',
+    value: '',
+  };
   commentPlace: Field = {
     title: 'Comentario',
-    value: ''
-  }
+    value: '',
+  };
   coordenadasPlace: Coordenadas;
   @Output() placeAdded: EventEmitter<Place> = new EventEmitter();
   @Input() places: Place[];
@@ -30,10 +30,16 @@ export class CreatorPlaceComponent implements OnInit {
   }
 
   createPlace() {
-    this.placeAdded.emit( {
+    console.log({
       nombre: this.namePlace.value,
-      comment:this.commentPlace.value,
-      coordenadas: this.coordenadasPlace
+      comment: this.commentPlace.value,
+      coordenadas: this.coordenadasPlace,
+    });
+
+    this.placeAdded.emit({
+      nombre: this.namePlace.value,
+      comment: this.commentPlace.value,
+      coordenadas: this.coordenadasPlace,
     });
   }
 }
