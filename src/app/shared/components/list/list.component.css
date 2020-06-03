@@ -1,0 +1,9 @@
+p{
+    color: black;
+}
+mat-selection-list {
+    border: 1px solid black;
+}
+mat-list-option:hover {
+    background-color: rgba(122, 122, 122, 0.3);
+}

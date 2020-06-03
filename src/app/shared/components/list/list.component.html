@@ -1,0 +1,6 @@
+<h3>Lugares</h3>
+<mat-selection-list #placesList [multiple]="false">
+    <mat-list-option *ngFor="let place of places" (click)="placeClick($event)">
+      <p>{{place.nombre}}</p>
+    </mat-list-option>
+  </mat-selection-list>
