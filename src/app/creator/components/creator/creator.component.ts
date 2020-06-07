@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ruta } from 'src/app/core/models/ruta.model';
-import { Route } from '@angular/compiler/src/core';
 import { RoutesService } from 'src/app/core/services/routes/routes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creator',
@@ -9,11 +9,15 @@ import { RoutesService } from 'src/app/core/services/routes/routes.service';
   styleUrls: ['./creator.component.css'],
 })
 export class CreatorComponent implements OnInit {
-  constructor(private routeService: RoutesService) {}
+  value: string;
+  href: string;
+  ruta: any;
+  constructor(private routeService: RoutesService, private router: Router) {}
 
   ngOnInit(): void {}
 
   rutaCreada(ruta: any) {
+    this.ruta = ruta;
     if (ruta) {
       let local: boolean = true;
       if (ruta.subir) {
@@ -51,8 +55,27 @@ export class CreatorComponent implements OnInit {
         });
       }
       if (local) {
-        // crear QR
+        this.value = JSON.stringify(ruta.ruta);
       }
+    }
+  }
+
+  downloadImage() {
+    const src = document.getElementsByTagName('img')[8].src;
+    if (window.navigator.msSaveOrOpenBlob) {
+      // IE specific download.
+      navigator.msSaveBlob(
+        window.URL.createObjectURL(src),
+        `${this.ruta.ruta.title}.png`
+      );
+    } else {
+      const downloadLink = document.createElement('a');
+      downloadLink.style.display = 'none';
+      document.body.appendChild(downloadLink);
+      downloadLink.setAttribute('href', window.URL.createObjectURL(src));
+      downloadLink.setAttribute('download', `${this.ruta.ruta.title}.png`);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
     }
   }
 }
