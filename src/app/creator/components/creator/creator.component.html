@@ -1,2 +1,8 @@
 <h1>Crea tu Ruta</h1>
 <app-datos-ruta (rutaCreada)="rutaCreada($event)"></app-datos-ruta>
+<div class="qr" *ngIf="value">
+    <ngx-qrcode id="qrCodeImage" type="url" [value]="value"></ngx-qrcode>
+    <button mat-raised-button color="primary">
+        <mat-icon><a [href]="href" [download]="ruta.ruta.title + '.png'">cloud_download</a></mat-icon>
+    </button>
+</div>
