@@ -1,0 +1,15 @@
+<h1 mat-dialog-content *ngIf="title">{{title}}</h1>
+<div mat-dialog-content id="img-wrapper">
+    <img [src]="imgSrc" alt="" *ngIf="imgSrc">
+    <div class="data">
+        <p><b>Creation Date</b></p>
+        <p *ngIf="creationDate">{{creationDate}}</p>
+        <p><b>Stars</b></p>
+        <p *ngIf="starts">{{starts}}</p>
+    </div>
+</div>
+<div class="actions" mat-dialog-actions>
+    <button mat-flat-button color="primary" (click)="download()">Download</button>
+    <button mat-flat-button color="primary" (click)="dialogRef.close()">Close</button>
+</div>
+

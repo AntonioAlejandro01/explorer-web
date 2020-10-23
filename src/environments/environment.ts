@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  fieldsRoute: ['Título','Autor','Localización','topic'],
+  url: 'http://localhost:4500/'
 };
 
 /*

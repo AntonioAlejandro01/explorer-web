@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  fieldsRoute: ['Título','Autor','Localización','topic'],
+  url: 'http://172.0.0.2:5555'
 };

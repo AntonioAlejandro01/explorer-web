@@ -1,8 +1,113 @@
-<h1>Crea tu Ruta</h1>
-<app-datos-ruta (rutaCreada)="rutaCreada($event)"></app-datos-ruta>
-<div class="qr" *ngIf="value">
-    <ngx-qrcode id="qrCodeImage" type="url" [value]="value"></ngx-qrcode>
-    <button mat-raised-button color="primary">
-        <mat-icon><a [href]="href" [download]="ruta.ruta.title + '.png'">cloud_download</a></mat-icon>
-    </button>
-</div>
+<h1>Create Route</h1>
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup" class="form">
+      <ng-template matStepLabel>Route Data</ng-template>
+      <mat-form-field class="field">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          formControlName="titleCtrl"
+          placeholder="Title"
+          required
+          class="input"
+        />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Author</mat-label>
+        <input
+          matInput
+          formControlName="authorCtrl"
+          placeholder="Author"
+          required
+          class="input"
+        />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Location</mat-label>
+        <input
+          matInput
+          formControlName="locationCtrl"
+          placeholder="Location"
+          required
+          class="input"
+        />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Topic</mat-label>
+        <input
+          matInput
+          formControlName="topicCtrl"
+          placeholder="Topic"
+          required
+          class="input"
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup" class="form">
+      <ng-template matStepLabel>Add Places</ng-template>
+      <mat-form-field class="field">
+        <mat-label>Number of places</mat-label>
+        <input
+          matInput
+          formControlName="numberCtrl"
+          placeholder="Name"
+          readonly
+          class="input"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          formControlName="nameCtrl"
+          placeholder="Name"
+          class="input"
+        />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Comment</mat-label>
+        <input
+          matInput
+          formControlName="commentCtrl"
+          placeholder="Comment"
+          class="input"
+        />
+      </mat-form-field>
+      <div class="map-button">
+        <app-map (CoordenadasMarked)="addCoordenadas($event)"></app-map>
+        <button mat-raised-button color="primary" (click)="addPlace()">
+          Add
+        </button>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Review and Done</ng-template>
+        <h3>Route Data</h3>
+        <p>Title: <b>{{firstFormGroup.value.titleCtrl}}</b></p>
+        <p>Author: <b>{{firstFormGroup.value.authorCtrl}}</b></p>
+        <p>Location: <b>{{firstFormGroup.value.locationCtrl}}</b></p>
+        <p>Topic: <b>{{firstFormGroup.value.topicCtrl}}</b></p>
+        <h3>Places</h3>
+        <p>
+            Names: <span *ngFor="let place of places">{{place.nombre}}  </span>
+        </p>
+        <button mat-flat-button (click)="download()">Download</button>
+        <button mat-flat-button (click)="downloadUpload()">Download and upload</button>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="reset(stepper.reset())">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

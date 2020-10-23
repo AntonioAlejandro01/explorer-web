@@ -1,0 +1,95 @@
+.layout-container
+    display: flex
+    flex-direction: column
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: lightgrey
+    #toolbar
+        position: sticky
+        top: 0
+        z-index: 99
+        .toolbar-title
+            margin-left: 8px
+            font-size: larger
+            cursor: pointer
+            a
+                text-decoration: none
+
+        .toolbar-spacer
+            flex: 1 0 auto
+
+        .toolbar-nav
+            height: 100%
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: center
+            .icon
+                display: flex
+                flex-direction: row
+                justify-content: center
+                align-items: center
+                margin-right: 2em
+                .icon-content
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    cursor: pointer
+
+
+            .toolbar-nav-wrapper
+                height: 100%
+                display: flex
+                justify-content: center
+                align-items: center
+                .toolbar-nav-wrapper-lang
+                    align-self: center
+
+            .toolbar-nav-item
+                height: inherit
+                display: flex
+                flex-direction: row
+                margin-right: 1em
+
+                .toolbar-nav-item-btn
+                    display: flex
+                    flex-direction: row
+                    align-items: center
+
+                    .toolbar-nav-item-btn-title
+                        font-weight: 500
+
+                .toolbar-nav-item-btn--active
+                    border-radius: 0px
+
+    .sidenav-container
+        flex: 1 0 auto
+        margin-top: 0px !important
+        .item-list
+            display: flex
+            flex-direction: column
+            justify-content: space-evenly
+            align-items: center
+            margin-right: 1em
+            margin-left: 1em
+            margin-bottom: 2em
+            cursor: pointer
+        .item-list--active
+
+.mobile
+    flex: 1 0 auto
+.btnMenu
+    display: flex
+    justify-content: space-evenly
+    align-items: center
+    img
+        width: 48px
+
+.lang-tooltip
+.hide
+    display: none
+.visible
+    display: block

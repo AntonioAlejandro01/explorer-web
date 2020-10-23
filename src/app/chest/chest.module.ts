@@ -4,16 +4,15 @@ import { CommonModule } from '@angular/common';
 import { ChestRoutingModule } from './chest-routing.module';
 import { ChestComponent } from './components/chest/chest.component';
 import { MaterialModule } from '../material/material.module';
-import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { DialogInfoComponent } from './components/dialog-info/dialog-info.component';
 @NgModule({
-  declarations: [ChestComponent],
+  declarations: [ChestComponent, DialogInfoComponent],
   imports: [
     CommonModule,
     ChestRoutingModule,
     MaterialModule,
-    SharedModule,
-    FormsModule,
-  ],
+    FormsModule
+  ]
 })
-export class ChestModule {}
+export class ChestModule { }

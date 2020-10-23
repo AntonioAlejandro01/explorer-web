@@ -1,15 +1,26 @@
-<h1>Chest</h1>
-<select id="selectFilter" [(ngModel)]="option">
-  <option *ngFor="let option of options;let i = index" [value]="i">{{option}}</option>
-</select>
-<div class="search">
-  <input type="search" id="inputSearch" [(ngModel)]="valueSearch">
-  <button mat-icon-button (click)="search()">
-    <mat-icon>search</mat-icon>
-  </button>
-</div>
-
-<div class="list">
-  <div class="list-item" *ngFor="let route of routes;let i = index" [id]="i" (click)="onClick($event.target.id)">
-    {{route.title}}</div>
+<div class="content">
+  <div class="search">
+    <mat-form-field appearance="fill" class="select">
+      <mat-label>Choose a filter</mat-label>
+      <mat-select [(ngModel)]="option">
+        <mat-option *ngFor="let option of options;let i = index" [value]="i">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="input">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput color="accent" [(ngModel)]="textSearch"/>
+      <button mat-icon-button matSuffix (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="results" *ngIf="results">
+    <div
+      class="result"
+      *ngFor="let result of results; let index = index"
+      (click)="onClick(index)"
+    >
+      <h3>{{ result.title }}</h3>
+    </div>
+  </div>
 </div>

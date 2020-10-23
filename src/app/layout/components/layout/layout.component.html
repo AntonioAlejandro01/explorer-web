@@ -1,0 +1,64 @@
+<div
+  class="layout-container"
+  [class.mobile]="mobileQuery.matches"
+  id="layout-container"
+>
+  <div class="toolbar-container" id="toolbar">
+    <mat-toolbar
+      color="primary"
+      class="toolbar"
+      [class.mat-elevation-z8]="false"
+    >
+      <mat-toolbar-row>
+        <button
+          mat-icon-button
+          *ngIf="mobileQuery.matches"
+          (click)="toggleSnav()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="toolbar-title" routerLink="/home">Explorer</h1>
+        <span class="toolbar-spacer"></span>
+        <div class="toolbar-nav" *ngIf="!mobileQuery.matches">
+          <div class="icon" *ngFor="let item of itemsNav">
+            <div class="icon-content" [routerLink]="item.redirection">
+              <span>{{ item.name }}</span>
+            </div>
+          </div>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <router-outlet *ngIf="!mobileQuery.matches"></router-outlet>
+
+  <!-- Phone Layout with sidenav menu-->
+  <mat-sidenav-container
+    class="sidenav-container"
+    [style.marginTop.px]="56"
+    *ngIf="mobileQuery.matches"
+  >
+    <mat-sidenav
+      #sidenav
+      [mode]="'over'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list>
+        <div
+          mat-list-item
+          class="item-list"
+          [routerLink]="nav.redirection"
+          routerLinkActive="item-list--active"
+          *ngFor="let nav of itemsNav"
+          (click)="closeSideNav()"
+        >
+          <mat-icon>{{ nav.icon }}</mat-icon>
+          <span>{{ nav.name }}</span>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

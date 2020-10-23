@@ -1,19 +1,14 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Coordenadas } from './../../../model/coordenadas.model';
 import * as L from 'leaflet';
-import { Coordenadas } from 'src/app/core/models/coordenadas.model';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css'],
+  styleUrls: ['./map.component.sass']
 })
 export class MapComponent implements OnInit, AfterViewInit {
+
   @Output() CoordenadasMarked: EventEmitter<any> = new EventEmitter();
   private coordenadas: Coordenadas;
   private map;
