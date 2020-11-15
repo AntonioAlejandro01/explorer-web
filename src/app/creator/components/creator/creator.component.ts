@@ -61,8 +61,6 @@ export class CreatorComponent implements OnInit {
     );
     this.secondFormGroup.controls.nameCtrl.setValue('');
     this.secondFormGroup.controls.commentCtrl.setValue('');
-    console.log(this.firstFormGroup.value);
-    console.log(this.places);
   }
   private formatRoutes(ruta: {
     title: string;

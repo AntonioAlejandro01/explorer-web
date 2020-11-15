@@ -19,6 +19,11 @@
         </button>
         <h1 class="toolbar-title" routerLink="/home">Explorer</h1>
         <span class="toolbar-spacer"></span>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput type="text" [(ngModel)]="address" placeholder="Address" (ngModelChange)="changeAddress()">
+        </mat-form-field>
+        <span class="toolbar-spacer"></span>
         <div class="toolbar-nav" *ngIf="!mobileQuery.matches">
           <div class="icon" *ngFor="let item of itemsNav">
             <div class="icon-content" [routerLink]="item.redirection">

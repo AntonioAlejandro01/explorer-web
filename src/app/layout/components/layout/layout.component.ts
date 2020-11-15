@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { ServerService } from 'src/app/services/server.service';
 import { SidenavService } from 'src/app/services/sidenav.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   private mobileQueryListener: () => void;
   mobileQuery: MediaQueryList;
   private observer: IntersectionObserver;
+  address: string;
   itemsNav = [
     {
       icon: 'inbox',
@@ -29,6 +31,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private sidenavService: SidenavService,
+    private serverService: ServerService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 768px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -49,6 +52,12 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
   closeSideNav(): void {
     this.sidenavService.close();
+  }
+
+  changeAddress(){
+    this.serverService.setServer(this.address);
+    
+    
   }
 
 }

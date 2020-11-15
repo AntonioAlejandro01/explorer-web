@@ -22,13 +22,11 @@ export class DialogInfoComponent implements OnInit, AfterViewInit {
     private snackbar: MatSnackBar
   ) {
     this.title = data.rutaResponse.title;
-    console.log(data.rutaResponse.qrKey);
   }
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    console.log(this.data.rutaResponse.qrKey);
 
     this.routeService
       .getQRImage(this.data.rutaResponse.qrKey)

@@ -42,12 +42,10 @@ export class ChestComponent implements OnInit {
 
   onClick(id: number): void{
     const route = this.results[id];
-    console.log(route);
     
     const data: DialogData = {
       rutaResponse: route
     };
-    console.log(route);
     const dialogRef = this.dialog.open(DialogInfoComponent, {
       data
     });

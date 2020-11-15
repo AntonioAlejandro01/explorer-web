@@ -7,8 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from './services/sidenav.service';
 import { RoutesService } from './services/routes.service';
 import { MarkerService } from './services/marker.service';
+import { ServerService } from './services/server.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,9 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [SidenavService, RoutesService, MarkerService],
+  providers: [SidenavService, RoutesService, MarkerService, ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
