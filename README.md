@@ -1,8 +1,8 @@
-# Explorer API
+# Explorer Web
 
-Repositorios del Proyecto
-- [Scripts de la Base de datos](https://github.com/AntonioAlejandro01/ExplorerDB)
-- [Servidor en Node.js](https://github.com/AntonioAlejandro01/Explorer-API)
-- [Página web en Angular](https://github.com/AntonioAlejandro01/explorer-web)
-- [Aplicacion Android](https://github.com/AntonioAlejandro01/ExpplorerApp)
+Proyect repositories
+- [SDatabase Scrips](https://github.com/AntonioAlejandro01/Explorer-DBScripts)
+- [Node.js API](https://github.com/AntonioAlejandro01/Explorer-API)
+- [Angular Web page](https://github.com/AntonioAlejandro01/explorer-web)
+- [Android APP](https://github.com/AntonioAlejandro01/Explorer-Android-APP)
 
